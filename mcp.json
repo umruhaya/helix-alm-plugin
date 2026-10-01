@@ -1,0 +1,7 @@
+{
+  "name": "helix-alm",
+  "displayName": "Helix ALM MCP Server",
+  "transport": "stdio",
+  "command": "bun",
+  "args": ["run", "src/index.ts"]
+}
