@@ -1,25 +1,50 @@
 # Helix ALM MCP Plugin
 
-Bun + TypeScript MCP server scaffold for Perforce Helix ALM.
+Production-oriented Model Context Protocol server for Perforce Helix ALM.
 
 ## Design goals
 
-- MCP 2.0 compatible architecture
-- Separate read-only and write capabilities
+- MCP compatible architecture
+- Separate read-only, write, and destructive capabilities
 - Least privilege by default
 - Externalized credentials
-- No GUI automation; uses Helix ALM server APIs
+- Direct Helix ALM server API integration
+
+## Security model
+
+The plugin runs read-only by default.
+
+```bash
+HELIX_ALM_URL=https://your-server
+HELIX_ALM_API_KEY=...
+HELIX_ALM_ALLOW_WRITES=false
+```
+
+Write and destructive capabilities require explicit deployment enablement.
 
 ## Tool classes
 
 Read tools:
-- list projects
-- search issues
-- fetch requirements
-- fetch test cases
+- projects
+- issues
+- requirements
+- test cases
+- test runs
 
 Write tools:
-- create/update issues
-- submit test results
+- create/update operations
 
-Destructive operations should be disabled unless explicitly enabled by deployment policy.
+Destructive tools:
+- delete operations
+
+Every MCP tool declares capability annotations:
+- `readOnlyHint`
+- `destructiveHint`
+- `idempotentHint`
+
+## Production roadmap
+
+- Complete Helix REST resource mappings
+- Add MCP resources for ALM traceability graphs
+- Add integration tests
+- Add packaging and deployment artifacts
