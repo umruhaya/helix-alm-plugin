@@ -1,0 +1,8 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "helix-alm-plugin",
+  "version": "0.1.0",
+  "description": "Secure MCP plugin for Perforce Helix ALM with typed read and write tools.",
+  "author": {"name": "umruhaya"},
+  "mcpServers": "mcp.json"
+}
